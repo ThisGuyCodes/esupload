@@ -1,0 +1,15 @@
+name: Go
+
+on:
+  release:
+    types: [created]
+
+jobs:
+
+  upload:
+    name: Upload
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Go Release Binaries
+      uses: wangyoucao577/go-release-action@v1.4
