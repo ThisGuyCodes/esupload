@@ -28,6 +28,9 @@ jobs:
     - name: Format
       run: |
         test -z "$(go fmt -l .)"
+
+    - name: Lint
+      uses: Jerome1337/golint-action@v1.0.1
     
     - name: Mod tidy
       run: |
