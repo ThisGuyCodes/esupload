@@ -26,13 +26,12 @@ jobs:
         go get -v -t -d ./...
 
     - name: Format
-      uses: sladyn98/auto-go-format@v0.0.1
-
-    - name: Lint
-      uses: Jerome1337/golint-action@v1.0.1
+      run: |
+        test -z "$(go fmt -l .)"
     
     - name: Mod tidy
-      uses: superliuwr/go-mod-tidy-pr@v1.0.0-go1.13.4
+      run: |
+        test -z "$(go mod tidy -v)"
 
     - name: Build
       run: go build -v .
