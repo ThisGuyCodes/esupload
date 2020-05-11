@@ -31,10 +31,11 @@ jobs:
         GOOS: ${{ matrix.os }}
         GOARCH: ${{ matrix.arch }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CGO_ENABLED: 0
       run: |
         set -euo pipefail
         
-        go build -v .
+        go build -ldflags '-extldflags "-static"' -v .
         
         EVENT_DATA=$(cat $GITHUB_EVENT_PATH)
         UPLOAD_URL=$(echo $EVENT_DATA | jq -r .release.upload_url)
