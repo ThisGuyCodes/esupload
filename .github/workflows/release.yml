@@ -17,5 +17,5 @@ jobs:
     - name: Go Release Binary
       uses: ngs/go-release.action@v1.0.2
       env:
-        GOOS: ${ matrix.os }
-        GOARCH: ${ matrix.arch }
+        GOOS: ${{ matrix.os }}
+        GOARCH: ${{ matrix.arch }}
