@@ -7,7 +7,6 @@ on:
     branches: [ master ]
 
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -25,6 +24,14 @@ jobs:
     - name: Get dependencies
       run: |
         go get -v -t -d ./...
+
+    - name: Format
+      run: |
+        test -z "$(go fmt -l .)"
+    
+    - name: Mod tidy
+      run: |
+        test -z "$(go mod tidy -v)"
 
     - name: Build
       run: go build -v .
