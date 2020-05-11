@@ -5,11 +5,17 @@ on:
     types: [created]
 
 jobs:
-
   upload:
     name: Upload
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: ["linux", "windows", "darwin"]
+        arch: ["amd64", "386"]
     steps:
-
-    - name: Go Release Binaries
-      uses: wangyoucao577/go-release-action@v1.4
+    - uses: actions/checkout@v2.1.0
+    - name: Go Release Binary
+      uses: ngs/go-release.action@v1.0.2
+      env:
+        GOOS: ${ matrix.os }
+        GOARCH: ${ matrix.arch }
