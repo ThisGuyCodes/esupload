@@ -19,6 +19,11 @@ Usage of esupload:
         Name of the index to put items into. (default "index")
 ```
 
+Pipe JSON objects to the tool over stdin (or use `-dataSource` to read from a file).
+```shell
+cat data.json | esupload
+```
+
 ## Limitations
 * Only uploads to one index. This is not sufficient for long-term usage of continually ingesting data-sets (i.e. logs).
 * The ID field *must* be a string. Other datatypes are not supported.
